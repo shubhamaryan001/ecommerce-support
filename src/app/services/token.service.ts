@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 
-const BASEURL = 'http://localhost:8000/api';
+const BASEURL = 'https://nameless-escarpment-33559.herokuapp.com/api';
 
 @Injectable({
   providedIn: 'root'

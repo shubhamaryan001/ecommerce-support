@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { TokenService } from 'src/app/services/token.service';
 import { Router } from '@angular/router';
 
-const API = 'http://localhost:8000/api';
+const API = 'https://nameless-escarpment-33559.herokuapp.com/api';
 
 
 @Component({

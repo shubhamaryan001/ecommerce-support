@@ -4,7 +4,7 @@ import { MessageService } from 'src/app/services/message.service';
 import { ActivatedRoute } from '@angular/router';
 import { UsersService } from 'src/app/services/users.service';
 import io from 'socket.io-client';
-const API = 'http://localhost:8000/api';
+const API = 'https://nameless-escarpment-33559.herokuapp.com/api';
 
 @Component({
   selector: 'app-message',
@@ -33,7 +33,7 @@ export class MessageComponent implements OnInit, AfterViewInit {
     private usersService: UsersService) {
 
 
-      this.socket = io('http://localhost:8000');
+      this.socket = io('https://nameless-escarpment-33559.herokuapp.com');
     }
 
   ngOnInit() {
