@@ -1,4 +1,4 @@
-<div *ngIf="show===1" class="container-fluid">
+<div *ngIf="showAdmin" class="container-fluid">
   <h3>Currently people</h3>
   <div class="row">
     <div class="col-3" *ngFor="let user of users">
@@ -15,7 +15,7 @@
     </div>
   </div>
 </div>
-<div *ngIf="show===0" class="container-fluid">
+<div *ngIf="showUsers"  class="container-fluid">
   <h3>Currently people</h3>
   <div class="row">
     <div class="col-3" *ngFor="let admin of admins">

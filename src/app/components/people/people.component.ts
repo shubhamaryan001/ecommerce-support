@@ -11,7 +11,9 @@ import { Router } from '@angular/router';
 export class PeopleComponent implements OnInit {
   users: [];
   token: any;
-  show: '';
+  show:any;
+  showAdmin=false;
+  showUsers= false;
   admins: [];
   constructor(private usersServices: UsersService,private tokenService:TokenService,private router:Router) { }
 
@@ -19,10 +21,40 @@ export class PeopleComponent implements OnInit {
 
     this.token = this.tokenService.GetUserInfo().token;
     this.show = this.tokenService.GetUserInfo().user.role;
-console.log(this.show)
     this.GetUsers();
     this.GetAdminUsers();
 
+  this.GetAdminShow();
+this.GetUserShow();
+
+
+
+  }
+
+
+
+  GetAdminShow(){
+
+    if(this.show === 1){
+
+      console.log(this.show);
+      this.showAdmin=true;
+
+
+    }
+  }
+
+
+
+  GetUserShow(){
+
+    if(this.show === 0){
+
+      console.log(this.show);
+      this.showUsers=true;
+
+
+    }
   }
 
 
