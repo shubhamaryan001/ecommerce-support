@@ -1,26 +1,22 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { TokenService } from './token.service';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
+import { TokenService } from "./token.service";
 
-
-const BASEURL = 'https://nameless-escarpment-33559.herokuapp.com/api';
+const BASEURL = "https://nodelatest-api.herokuapp.com/api";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class UsersService {
-  constructor(private http: HttpClient, private tokenService: TokenService) { }
-
-
+  constructor(private http: HttpClient, private tokenService: TokenService) {}
 
   // GetAllUsers(token): Observable<any> {
   //   return this.http.get(`${BASEURL}/users`);
 
   // }
 
-
-  GetAllUsers = (token) => {
+  GetAllUsers = token => {
     return fetch(`${BASEURL}/users`, {
       method: "GET",
       headers: {
@@ -35,8 +31,7 @@ export class UsersService {
       .catch(err => console.log(err));
   };
 
-
-  GetAllAdmin = (token) => {
+  GetAllAdmin = token => {
     return fetch(`${BASEURL}/adminusers`, {
       method: "GET",
       headers: {
@@ -51,9 +46,7 @@ export class UsersService {
       .catch(err => console.log(err));
   };
 
-
-
-  GetUserByName = (name,token) => {
+  GetUserByName = (name, token) => {
     return fetch(`${BASEURL}/name/${name}`, {
       method: "GET",
       headers: {
@@ -67,10 +60,4 @@ export class UsersService {
       })
       .catch(err => console.log(err));
   };
-
-
-
-
-
-
 }

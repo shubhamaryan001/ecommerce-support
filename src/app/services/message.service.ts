@@ -1,19 +1,14 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
-const BASEURL = 'https://nameless-escarpment-33559.herokuapp.com/api';
-
-
+const BASEURL = "https://nodelatest-api.herokuapp.com/api";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class MessageService {
-
-  constructor(private http: HttpClient) { }
-
-
+  constructor(private http: HttpClient) {}
 
   // SendMessage(senderId, receiverId, receiverName, message): Observable<any> {
   //   return this.http.post(`${BASEURL}/chat-messages/${senderId}/${receiverId}`, {
@@ -23,9 +18,14 @@ export class MessageService {
   //   });
   // }
 
-
-  SendMessage = (token,senderId, senderName, receiverId, receiverName, message) => {
-
+  SendMessage = (
+    token,
+    senderId,
+    senderName,
+    receiverId,
+    receiverName,
+    message
+  ) => {
     return fetch(`${BASEURL}/chat-messages/${senderId}/${receiverId}`, {
       method: "POST",
       headers: {
@@ -33,7 +33,14 @@ export class MessageService {
         "Content-Type": "application/json",
         Authorization: `Bearer ${token}`
       },
-      body: JSON.stringify({token,senderId,senderName, receiverId, receiverName, message })
+      body: JSON.stringify({
+        token,
+        senderId,
+        senderName,
+        receiverId,
+        receiverName,
+        message
+      })
     })
       .then(response => {
         return response.json();
@@ -43,8 +50,7 @@ export class MessageService {
       });
   };
 
-
-  GetAllMessages = (token,senderId,receiverId) => {
+  GetAllMessages = (token, senderId, receiverId) => {
     return fetch(`${BASEURL}/chat-messages/${senderId}/${receiverId}`, {
       method: "GET",
       headers: {
@@ -59,10 +65,7 @@ export class MessageService {
       .catch(err => console.log(err));
   };
 
-
-
   // GetAllMessages(senderId, receiverId): Observable<any> {
   //   return this.http.get(`${BASEURL}/chat-messages/${senderId}/${receiverId}`);
   // }
-
 }

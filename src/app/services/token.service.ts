@@ -1,36 +1,33 @@
-import { Injectable } from '@angular/core';
-import { CookieService } from 'ngx-cookie-service';
+import { Injectable } from "@angular/core";
+import { CookieService } from "ngx-cookie-service";
 
-const BASEURL = 'https://nameless-escarpment-33559.herokuapp.com/api';
+const BASEURL = "https://nodelatest-api.herokuapp.com/api";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
 export class TokenService {
-
-  constructor(private cookieService: CookieService) { }
-
+  constructor(private cookieService: CookieService) {}
 
   SetToken(token) {
-    this.cookieService.set('chat_token', token);
+    this.cookieService.set("chat_token", token);
   }
 
   GetToken() {
-    return this.cookieService.get('chat_token');
+    return this.cookieService.get("chat_token");
   }
 
   DeleteToken() {
-    this.cookieService.delete('chat_token');
+    this.cookieService.delete("chat_token");
   }
 
- authenticate = (data) => {
+  authenticate = data => {
     if (typeof window !== "undefined") {
       localStorage.setItem("jwt", JSON.stringify(data));
-
     }
   };
 
- isAuthenticated = () => {
+  isAuthenticated = () => {
     if (typeof window == "undefined") {
       return false;
     }
@@ -39,18 +36,17 @@ export class TokenService {
     } else {
       return false;
     }
- };
+  };
 
- GetUserInfo() {
-  const token = this.isAuthenticated();
-  let payload;
-  if (token) {
+  GetUserInfo() {
+    const token = this.isAuthenticated();
+    let payload;
+    if (token) {
+      payload = JSON.parse(localStorage.getItem("jwt"));
+    }
 
-    payload = JSON.parse(localStorage.getItem("jwt"));
+    return payload;
   }
-
-  return payload;
-}
 
   signout = next => {
     if (typeof window !== "undefined") {
@@ -70,11 +66,10 @@ export class TokenService {
     const token = this.GetToken();
     let payload;
     if (token) {
-      payload = token.split('.')[1];
+      payload = token.split(".")[1];
       payload = JSON.parse(window.atob(payload));
     }
 
     return payload;
   }
-
 }
